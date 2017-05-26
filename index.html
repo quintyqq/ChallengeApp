@@ -206,7 +206,7 @@ Authors' personal data:<br>
                 dlgListaSendBody.value = sTxt; // fill textarea dlgListaSend
 				
 				//Dodaje do LocalStorage liste z okienka ((Z EDYTOWAĆ FORMAT )
-                localStorage.setItem('challenge', dlgListaSendBody.value);
+                //localStorage.setItem('challenge', dlgListaSendBody.value);
                 
     }
 
@@ -307,15 +307,15 @@ Wieliczka, Kraków, Zabierzów
                 
 				//Pobieranie danych jeśli jest LocalStorage to zawsze z niego
 				//Jeśli nie to bierze z ramki
-				var sTxt2 = localStorage.getItem('challenge');
-				var sTxt;
-				if(sTxt2 != null && sTxt2.length > 0) {
-				sTxt = sTxt2;
-				}
-				else
-				{
+				//var sTxt2 = localStorage.getItem('challenge');
+				//var sTxt;
+				//if(sTxt2 != null && sTxt2.length > 0) {
+				//sTxt = sTxt2;
+				//}
+				//else
+				//{
                 var sTxt = filtrKoordynat(punktyLista.value);
-				}
+				//}
                 //var aArr = sTxt.split("\n");
 		 var aArr = sTxt.split("\n");
                 //if(aArr.length<2) return; jak jest jedna zmienna to się kończy robić
@@ -449,7 +449,7 @@ Wieliczka, Kraków, Zabierzów
                         {// TODO do pozniejszej obslugi - odeslanie wynikow etc.
                             var sMsg = "You just complete Challenge!";
 							//USUWANIE z localStorage
-							localStorage.setItem('challenge', null);
+							//localStorage.setItem('challenge', null);
                         }
                         else
                         {
