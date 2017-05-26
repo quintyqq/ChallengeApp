@@ -62,7 +62,7 @@ App description:
 Challenge App is an application that challenges your siblings, friends or colleagues. The application is like outdoor game, close to ‘Podchody’ game, which is associated with childhood of everyone. The user adds the choice coordinates, which his opponent have to visit later in the correct order. If user want to encourage his opponent to challenge, he can add information about a reward, or appropriately mobilize him. To better reflect the climate of field games, the application does not tell the user the current location, but using geolocation tells him  about the distance to the next point on the map. Scams are not possible because the competitor will win challenge only if he visits all the map points in the correct order. After all, the competitor should inform the user that he has completed the task. In return he will have to give him beer, coffee or a delicious cake!
 <br><br>
 Authors' personal data:<br>
-- Ewa Kołodziejczyk [*TEAM MANAGER*], ekolodziejczyk@gmail.com<br>
+- Ewa Kołodziejczyk (TEAM MANAGER), ekolodziejczyk@gmail.com<br>
 - Łukasz Kępa, lkepa@gmail.com<br>
 - Kornel Kawulok, kkawulok@gmail.com<br>
                 <a href="#pageMain" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">Ok</a>
@@ -80,7 +80,7 @@ Authors' personal data:<br>
                 <a href="#popupNested" data-rel="popup" class="ui-btn-right ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bullets" data-transition="pop"></a>
                     <div data-role="popup" id="popupNested"> <!-- popup within a popup, the first popup to remain open so you can return to it from the second one (the  plugin for jQM) -->
                     <div data-role="collapsibleset" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" style="margin:0; width:250px;">
-                        <div data-role="collapsible" data-inset="false"> <!-- HAMBURGER -->
+                        <div data-role="collapsible" data-inset="false">
                             <h3>Challenge App</h3>
                                 <ul data-role="listview">
                                     <li><a href="#dlgNazwa">Create challenge</a></li>
@@ -172,27 +172,27 @@ Authors' personal data:<br>
         </div>
 
         <script>
-            function dlgAddClick() { <!-- FUNKCJE JAVASCRIPTOWE, pobiera z tablicy Array, koordynaty i przekształca je na kod html, pobiera je i przekształca na listę w html -->
+            function dlgAddClick() {
                 sInnHtml = listaPktCreate.innerHTML; //  innerHTML retrieves and sets content in HTML
                 sInnHtml += "<li>"
-                sInnHtml += addPointDescr.value; <!-- ta wartosc jest przenoszona do send -->
+                sInnHtml += addPointDescr.value;
                 sInnHtml += " ("
-                sInnHtml += addPointGPS.innerText; // innerText retrieves and sets the content of the tag as plain text, zamienia to co w jakimś polu na tekst
+                sInnHtml += addPointGPS.innerText; // innerText retrieves and sets the content of the tag as plain text
                 sInnHtml += ")</li> <br>"
                 listaPktCreate.innerHTML = sInnHtml;
                 }
         </script>
 
         
-        <div data-role="page" data-dialog="true" id="dlgAddPoint"> <!-- okienko do pobierania punktów -->
+        <div data-role="page" data-dialog="true" id="dlgAddPoint">
                 <div id="divMain" class="ui-content">
                 <h3 class="mc-text-center">Add point</h3>
                 <form>
                     <p class="mc-text-center"><b>Current GPS value</b></p>
-                    <div class="mc-text-center" id="addPointGPS">....</div> <!-- kropki jak nie ma lokalizacji -->
+                    <div class="mc-text-center" id="addPointGPS">....</div>
                     <h3 class="mc-text-center" for="addPointDescr">Description</h3>
                     <input id="addPointDescr" name="addPointDescr" required  />
-                    <a href="#pageCreate" id="OKgps" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" onclick="dlgAddClick()"><center>Ok</center></a> <!-- po kliku punkty sie gromadza -->
+                    <a href="#pageCreate" id="OKgps" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" onclick="dlgAddClick()"><center>Ok</center></a>
                     <a href="#pageCreate" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">Cancel</a>
                 </form>
             </div>
@@ -200,27 +200,14 @@ Authors' personal data:<br>
 
         
         <script>
-            <!--function dlgCrtSend() { <!-- ta funkcja wyswietla zbiorczo informacje o czelendzu -->
-                // sTxt = "Challenge: " + nazwaChallenge.value + "\n";
-                // sTxt += listaPktCreate.innerText;
-                // dlgListaSendBody.value = sTxt; // fill textarea dlgListaSend
-   
-   // }-->
-	
-	function dlgCrtSend() { <!-- ta funkcja wyswietla zbiorczo informacje o czelendzu -->
-                sTxt = "Challenge v0.1, " + nazwaChallenge.value + "\n";
+            function dlgCrtSend() {
+                sTxt = "Challenge: " + nazwaChallenge.value + "\n";
                 sTxt += listaPktCreate.innerText;
-                //alert(sTxt);
-                dlgListaSendBody.value = sTxt;
-				
-				//Dodaje do LocalStorage liste z okienka ((Z EDYTOWAĆ FORMAT )
-				localStorage.setItem('challenge', dlgListaSendBody.value);
-				
+                dlgListaSendBody.value = sTxt; // fill textarea dlgListaSend
    
     }
 
-
-            function dlgGetGPS() { <!-- funkcja wypelniajaca koordynate zamiast kropek-->
+            function dlgGetGPS() {
                 //Call the Cordova Geolocation API This initiates an asynchronous request to detect the user's position, and queries the positioning hardware to get up-to-date information. When the position is determined, the defined callback function is executed. 
 
                 navigator.geolocation.getCurrentPosition(onGetLocationSuccess); // .getCurrentPosition() method is used to get the current position of the device.
@@ -228,15 +215,15 @@ Authors' personal data:<br>
 
             }
 
-            function onGetLocationSuccess(position) { <!-- funkcja której argumentem są koordynaty -->
+            function onGetLocationSuccess(position) {
                 //Retrieve the location information from the position object
-                var latitude = position.coords.latitude; // a double representing the position's latitude in decimal degrees. POBIERA SZEROKOSC
-                var longitude = position.coords.longitude; // a double representing the position's longitude in decimal degrees. POBIERA DŁUGOSC
+                var latitude = position.coords.latitude; // a double representing the position's latitude in decimal degrees.
+                var longitude = position.coords.longitude; // a double representing the position's longitude in decimal degrees.
                 addPointGPS.innerText = latitude + "," + longitude;
 
             } /* This code uses the device's geolocation capability to get the latitude and longitude of the device's location. It then uses that information to query the App for current conditions for the current location. */
 			
-			function filtrKoordynat(str){ <!-- jak przekleisz tekst czelendza z gmaila, to usuwa wszystkie znaki ktore nie sa koorynatami, zostawia 0-9, przecinek , kropka,slasz enter -->
+			function filtrKoordynat(str){
 			  objReg = /[1234567890,.\n]/;
 			  var arr = str.split("");
 			  var str_return = "";
@@ -282,9 +269,9 @@ Authors' personal data:<br>
                 <a data-rel="back" class="ui-btn-left ui-btn  ui-btn-icon-notext ui-corner-all ui-icon-back">Back</a>
                 <form>
                     <h3 class="mc-text-center" for="dlgListaSendBody">Send this to friend</h3>
-                    <textarea id="dlgListaSendBody" name="dlgListaSendBody" required rows="6"></textarea> <!-- wyswietla sie wszystko co wczesniej zostalo napisane w polu do wysylania -->
+                    <textarea id="dlgListaSendBody" name="dlgListaSendBody" required rows="6"></textarea>
 					Frend's mail:
-					<textarea id="mailkolegi" name="mailkolegi" required rows="1"></textarea> <!-- to jest  --><!-- zamiana tekstu wczensiej w odnośniku / tworzy ofosnik do przegladarki, gdzie wszystko sie wkleja w odpowednie miejsca, np mail do maila nazwa czelendza  odpwoednie miejsce, liste punktów koordynate																														wartosci heksadecymalne entera,  -->
+					<textarea id="mailkolegi" name="mailkolegi" required rows="1"></textarea>
 					<input type="button" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" onclick="location.href=&quot;mailto:&quot;+document.getElementById(&quot;mailkolegi&quot;).value+&quot;?subject=Nowe wyzwanie: &quot;+document.getElementById(&quot;nazwaChallenge&quot;).value+&quot;&body=&quot;+document.getElementById(&quot;listaPktCreate&quot;).innerText+'%0D%0A'+'%0D%0A'+&quot;Skopiuj powyższy tekst i wklej na stronie: https://ewakolodziejczyk.github.io/MobileApp/ &quot; " value="Send">
                     <a href="#pageMain" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5"><center>Home</center></a>
 					
@@ -314,6 +301,7 @@ Wieliczka, Kraków, Zabierzów
 
             function initMap() {
                 
+                
 				//Pobieranie danych jeśli jest LocalStorage to zawsze z niego
 				//Jeśli nie to bierze z ramki
 				var sTxt2 = localStorage.getItem('challenge');
@@ -330,16 +318,15 @@ Wieliczka, Kraków, Zabierzów
                 //if(aArr.length<2) return; jak jest jedna zmienna to się kończy robić
                 
             
-                
                 // liczymy srednia - czyli srodek mapki
-                dLat=0; dLng=0;  iMaxCheckPoint=0; <!-- zainicjowanie zmeinnych -->
+                dLat=0; dLng=0;  iMaxCheckPoint=0;
                 for(i=0; i<aArr.length; i++)
                 {
                     var sWsp = aArr[i]
                     var aWsp=sWsp.split(",")
                     if(aWsp.length==2)
                      {
-                     itLat=parseFloat(aWsp[0]); <!-- metoda parsowania z floata -->
+                     itLat=parseFloat(aWsp[0]);
                      itLng=parseFloat(aWsp[1]);
                      
                      dLat+=itLat;
@@ -354,7 +341,7 @@ Wieliczka, Kraków, Zabierzów
 
                 var pSrodek = {lat: dLat, lng: dLng};
                 
-                // wyliczanie poziomu zoom (wedle rozrzucenia punktow) zeby wszystie punkty zmeiscily sie na mapie
+                // wyliczanie poziomu zoom (wedle rozrzucenia punktow)
                  iMaxDiffLat = 0; // różnica pomiędzy kolejnymi punktami - diff-różnica
                  iMaxDiffLng = 0;
                 for(i=0; i<aArr.length; i++)
@@ -363,11 +350,11 @@ Wieliczka, Kraków, Zabierzów
                      var aWsp=sWsp.split(",")
                      if(aWsp.length==2)
                      {
-                     itLat=Math.abs(parseFloat(aWsp[0])-dLat); <!-- wartosc ujemna moze byc, wiec to wartosc bezwzgledn -->
+                     itLat=Math.abs(parseFloat(aWsp[0])-dLat);
                      // bedzie blad liczenia gdy punkty sa -180 i +180 dlugosci geogr
                      itLng=Math.abs(parseFloat(aWsp[1])-dLng);
                      
-                     if(iMaxDiffLat < itLat) iMaxDiffLat = itLat; // iMaxDiffLat= max(iMaxDiffLat,itLat) roznica miedzy wartoscami
+                     if(iMaxDiffLat < itLat) iMaxDiffLat = itLat; // iMaxDiffLat= max(iMaxDiffLat,itLat)
                      if(iMaxDiffLng < itLng) iMaxDiffLng = itLng;
                      }
                 }
@@ -379,7 +366,7 @@ Wieliczka, Kraków, Zabierzów
                 if(iMaxDiffLat < 1 && iMaxDiffLng<1) iZoom=10;
 
 
-                oMap = new google.maps.Map(document.getElementById('mapek'), { <!-- tworzymy obiekt ktory jest obietem Google Maps -->
+                oMap = new google.maps.Map(document.getElementById('mapek'), {
                 zoom: iZoom,
                 zoomControl: true, mapTypeControl: true,
                 center: pSrodek});
@@ -388,7 +375,7 @@ Wieliczka, Kraków, Zabierzów
 //            mapTypeId:roadmap
 //                });
 
-                iCnt=0; // licznik punktów, punkty są w oddzielnych liniach, nie w każdej linii musi być punkt, licznik wystąpień na integer cnt / musisz wiedziec ile punktow masz doprzejscia, wiec musisz ja zliczyc
+                iCnt=0; // licznik punktów, punkty są w oddzielnych liniach, nie w każdej linii musi być punkt, licznik wystąpień na integer cnt 
 
                 for(i=0; i<aArr.length; i++)
                 {
@@ -401,14 +388,12 @@ Wieliczka, Kraków, Zabierzów
                      
                      var sLabel="Punkt " + iCnt;
                      iCnt = iCnt+1;
-                     var oTmp  = new google.maps.Marker({position: {lat: itLat, lng: itLng}, map: oMap, label: sLabel}); <!-- naniesienie kazdegopunktow, wszystkich az do koca tablicy -->
+                     var oTmp  = new google.maps.Marker({position: {lat: itLat, lng: itLng}, map: oMap, label: sLabel});
                      aPkt[iCnt] = oTmp;
 
 
                      }
                 }
-
-					
 
                 iCurrCheckPoint = 1;
 //                var marker = new google.maps.Marker({
@@ -419,9 +404,9 @@ Wieliczka, Kraków, Zabierzów
 
                function sprawdzOdleglosc(lat1,lng1,lat2,lng2)  // This script calculates great-circle distances between the two points – that is, the shortest distance over the earth’s surface
                {
-                var spZ = 6371e3; // Radius of the earth in metres - sredni! promien ziemi (R) , najkrotszy dystans
-                var fi1 = lat1.toRadians(); // φ1 Fi
-                var fi2 = lat2.toRadians(); // φ2 
+                var spZ = 6371e3; // Radius of the earth in metres - sredni! promien ziemi (R)
+                var fi1 = lat1.toRadians(); // φ1
+                var fi2 = lat2.toRadians(); // φ2
                 var dfi = (lat2-lat1).toRadians(); // Δφ - // Javascript functions in radians
                 var delab = (lng2-lng1).toRadians(); // Δλ 
 
@@ -441,29 +426,26 @@ Wieliczka, Kraków, Zabierzów
                     };
                 }
 
-               function zrobCheck() { <!-- ffunkcja wywylujaca jak daleko jestesmy od punktu -->
+               function zrobCheck() {
                 navigator.geolocation.getCurrentPosition(onGetLocSuccessCheckpoint); // odczytaj GPS When the position is determined, the defined callback function is executed. 
                }
 
-               function onGetLocSuccessCheckpoint(position) { 
+               function onGetLocSuccessCheckpoint(position) {
                    // Retrieve the location information from the position object
                    var latitude = position.coords.latitude;
                    var longitude = position.coords.longitude;
                    var iOdl=sprawdzOdleglosc(aPkt[iCurrCheckPoint].getPosition().lat(), aPkt[iCurrCheckPoint].getPosition().lng(),latitude,longitude);
                     // if(ok) zaliczPunkt (idz dalej)
                     if(iOdl<1000) // podwójny błąd GPS (4.9 m na otwartej przestrzeni)
-					
                     {
-						aPkt[iCurrCheckPoint].setMap(null); // usuwanie markera z mapy
                         delete aPkt[iCurrCheckPoint];
                         aPkt[iCurrCheckPoint] = null;
                         iCurrCheckPoint++;
                         if(iCurrCheckPoint > iMaxCheckPoint)
                         {// TODO do pozniejszej obslugi - odeslanie wynikow etc.
                             var sMsg = "You just complete Challenge!";
-														//USUWANIE z localStorage
-											localStorage.setItem('challenge', null);
-
+							//USUWANIE z localStorage
+							localStorage.setItem('challenge', null);
                         }
                         else
                         {
@@ -483,7 +465,7 @@ Wieliczka, Kraków, Zabierzów
             }
         </script>
        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLSspr4Exszv9A-6pnfr2t39cojwjDvMA&callback=initMap"
-  type="text/javascript"></script> <!-- incujnuje mapke na naszym kluczu -->
+  type="text/javascript"></script>
 <!--
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?callback=initMap">
@@ -498,7 +480,7 @@ Wieliczka, Kraków, Zabierzów
                         <a href="#pageMain" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">Cancel</a>
                     </form>
                 </div>
-            </div>      <!-- wklejanie czelandza do okineka -->
+            </div>      
 
             <div data-role="page" id="pageTake">
                 <div data-role="header" class="header">
@@ -509,7 +491,7 @@ Wieliczka, Kraków, Zabierzów
                     <form>
                     <a href="#pageTake" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" onclick="initMap()">Show Map</a>
                     <a href="#pageTake" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" onclick="zrobCheck()">Check point</a>
-                    <a href="#pageMain" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">Cancel</a> <!-- wczesniejszy div przenosi tutaj, widok z mapką -->
+                    <a href="#pageMain" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">Cancel</a>
                     </form>
                 </div>
                 <footer data-role="footer" data-position="fixed">
