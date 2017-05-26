@@ -204,7 +204,10 @@ Authors' personal data:<br>
                 sTxt = "Challenge: " + nazwaChallenge.value + "\n";
                 sTxt += listaPktCreate.innerText;
                 dlgListaSendBody.value = sTxt; // fill textarea dlgListaSend
-   
+				
+				//Dodaje do LocalStorage liste z okienka ((Z EDYTOWAĆ FORMAT )
+                localStorage.setItem('challenge', dlgListaSendBody.value);
+                
     }
 
             function dlgGetGPS() {
@@ -438,6 +441,7 @@ Wieliczka, Kraków, Zabierzów
                     // if(ok) zaliczPunkt (idz dalej)
                     if(iOdl<1000) // podwójny błąd GPS (4.9 m na otwartej przestrzeni)
                     {
+						aPkt[iCurrCheckPoint].setMap(null); // usuwanie markera z mapy
                         delete aPkt[iCurrCheckPoint];
                         aPkt[iCurrCheckPoint] = null;
                         iCurrCheckPoint++;
